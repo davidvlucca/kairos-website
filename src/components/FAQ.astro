@@ -1,0 +1,121 @@
+---
+---
+
+<section id="faq" style="padding: var(--space-xl) 0;">
+  <div class="section-container">
+
+    <div style="text-align:center; margin-bottom: 3.5rem;">
+      <span class="pill-label">FAQ · PERGUNTAS FREQUENTES</span>
+      <h2 style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; margin-top: 1.25rem;">
+        Tens dúvidas?
+      </h2>
+    </div>
+
+    <div style="max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem;">
+
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>O domínio e o alojamento estão incluídos?</span>
+          <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="accordion-body" aria-hidden="true">
+          <div class="accordion-body-inner">Não estão incluídos em nenhum plano. O domínio e o alojamento são sempre da responsabilidade do cliente. Podemos aconselhar, recomendar serviços e ajudar na configuração, mas os custos são teus.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>O que acontece se precisar de mais alterações?</span>
+          <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="accordion-body" aria-hidden="true">
+          <div class="accordion-body-inner">Cada plano inclui revisões gratuitas (1 no Essencial, 3 no Completo). Após essas revisões, as alterações têm um custo de €50 por alteração ou €20 por hora.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>O que precisas de mim para começar?</span>
+          <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="accordion-body" aria-hidden="true">
+          <div class="accordion-body-inner">O mínimo é o nome ou logo da tua marca. Copy, cores e direção visual são completamente opcionais — podemos criar e sugerir tudo isso juntos.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>Consigo ter o meu site pronto em 72 horas?</span>
+          <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="accordion-body" aria-hidden="true">
+          <div class="accordion-body-inner">Sim, para o Plano Essencial. O prazo de 72 horas começa a contar a partir do momento em que recebemos todos os materiais necessários.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>Trabalham com negócios fora de Portugal?</span>
+          <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="accordion-body" aria-hidden="true">
+          <div class="accordion-body-inner">Sim. Trabalhamos 100% remotamente, com qualquer negócio de língua portuguesa, independentemente da localização.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>Posso começar com o Essencial e fazer upgrade depois?</span>
+          <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="accordion-body" aria-hidden="true">
+          <div class="accordion-body-inner">Claro. Muitos clientes começam com o Plano Essencial e expandem quando estão prontos. Conversamos sobre isso quando chegar a altura.</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.accordion-header').forEach((header) => {
+    header.addEventListener('click', () => {
+      const item = header.closest('.accordion-item');
+      if (!item) return;
+      const body = item.querySelector('.accordion-body') as HTMLElement | null;
+      const isOpen = item.classList.contains('open');
+
+      // Close all items
+      document.querySelectorAll('.accordion-item').forEach((el) => {
+        el.classList.remove('open');
+        const b = el.querySelector('.accordion-body') as HTMLElement | null;
+        if (b) b.style.maxHeight = '0';
+        const h = el.querySelector('.accordion-header');
+        if (h) h.setAttribute('aria-expanded', 'false');
+        const ab = el.querySelector('.accordion-body');
+        if (ab) ab.setAttribute('aria-hidden', 'true');
+      });
+
+      // Open clicked item if it was closed
+      if (!isOpen && body) {
+        item.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        header.setAttribute('aria-expanded', 'true');
+        body.setAttribute('aria-hidden', 'false');
+      }
+    });
+  });
+</script>

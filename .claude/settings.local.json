@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "Bash(ls -la proto-parallax/)",
+      "Bash(dir proto-parallax *)",
+      "Bash(mv proto-parallax/.gitignore .)",
+      "Bash(mv proto-parallax/.vscode .)",
+      "Bash(mv proto-parallax/README.md .)",
+      "Bash(mv proto-parallax/astro.config.mjs .)",
+      "Bash(mv proto-parallax/package.json .)",
+      "Bash(npm install *)",
+      "Bash(npx astro *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:4321)",
+      "Bash(npx vercel *)"
+    ]
+  }
+}

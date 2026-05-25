@@ -1,0 +1,106 @@
+---
+---
+
+<section id="portfolio" style="padding: var(--space-xl) 0;">
+  <div class="section-container">
+
+    <div style="text-align:center; margin-bottom: 3.5rem;">
+      <span class="pill-label">PORTFÓLIO · WORK</span>
+      <h2 style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; margin-top: 1.25rem;">
+        Feito por Kairos.
+      </h2>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <!-- Card: Celso Barber -->
+      <div class="glass portfolio-card" style="padding: 2rem; cursor: pointer; transition: transform 0.25s ease, border-color 0.2s ease;">
+        <div style="
+          width: 100%;
+          height: 160px;
+          background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%);
+          border-radius: 10px;
+          margin-bottom: 1.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid rgba(255,255,255,0.06);
+          font-size: 2rem;
+          font-weight: 700;
+          color: rgba(255,255,255,0.08);
+          letter-spacing: 0.05em;
+        ">celsobarber</div>
+
+        <div style="display:flex; gap:0.5rem; margin-bottom:1rem; flex-wrap:wrap;">
+          <span style="
+            padding: 0.2rem 0.6rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+          ">Plano Essencial</span>
+        </div>
+
+        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem;">Celso Barber</h3>
+
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.25rem;">
+          Barbearia premium em Lisboa. Landing page estática com agendamento via WhatsApp.
+        </p>
+
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-family: monospace;">
+            celsobarber.vercel.app
+          </span>
+          <a href="https://celsobarber.vercel.app/" target="_blank" rel="noopener noreferrer"
+             style="font-size:0.9rem; color:var(--text-primary); text-decoration:none; font-weight:500; transition: opacity 0.2s ease;"
+             aria-label="Ver site Celso Barber">
+            Ver Site →
+          </a>
+        </div>
+      </div>
+
+      <!-- Placeholder card for future work -->
+      <div style="
+        border: 1px dashed rgba(255,255,255,0.1);
+        border-radius: 16px;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        text-align: center;
+      ">
+        Em breve...
+      </div>
+
+    </div>
+
+    <p style="text-align:center; margin-top:2rem; color:var(--text-muted); font-size:0.85rem;">
+      Mais trabalhos em breve.
+    </p>
+
+  </div>
+</section>
+
+<style>
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .portfolio-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-strong);
+  }
+  @media (max-width: 640px) {
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

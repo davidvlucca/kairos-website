@@ -1,0 +1,57 @@
+---
+const waNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? '351XXXXXXXXX';
+---
+
+<footer style="border-top: 1px solid var(--border); padding: var(--space-md) 0 var(--space-sm);">
+  <div class="section-container">
+
+    <!-- Three columns -->
+    <div class="footer-grid" style="display:grid; grid-template-columns:1fr auto 1fr; align-items:start; gap:2rem; margin-bottom:2rem;">
+
+      <!-- Left: Logo + tagline -->
+      <div>
+        <div style="font-size:1.1rem; font-weight:700; letter-spacing:0.2em; margin-bottom:0.5rem;">kairos</div>
+        <p style="color:var(--text-muted); font-size:0.8rem; line-height:1.5;">Studio de Web e Automação</p>
+      </div>
+
+      <!-- Center: Nav links -->
+      <nav aria-label="Footer navigation" style="display:flex; flex-direction:column; gap:0.5rem; align-items:center;">
+        <a href="#como-funciona" style="color:var(--text-secondary); font-size:0.85rem; text-decoration:none; transition:color 0.2s ease;">Como Funciona</a>
+        <a href="#planos" style="color:var(--text-secondary); font-size:0.85rem; text-decoration:none; transition:color 0.2s ease;">Planos</a>
+        <a href="#portfolio" style="color:var(--text-secondary); font-size:0.85rem; text-decoration:none; transition:color 0.2s ease;">Portfólio</a>
+        <a href="#faq" style="color:var(--text-secondary); font-size:0.85rem; text-decoration:none; transition:color 0.2s ease;">FAQ</a>
+        <a href="#contacto" style="color:var(--text-secondary); font-size:0.85rem; text-decoration:none; transition:color 0.2s ease;">Contacto</a>
+      </nav>
+
+      <!-- Right: WhatsApp -->
+      <div style="text-align:right;">
+        <a href={`https://wa.me/${waNumber}`} class="btn-ghost" style="padding:0.5rem 1.25rem; font-size:0.85rem;" aria-label="Contactar no WhatsApp">
+          WhatsApp
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div style="border-top: 1px solid var(--border); padding-top: 1.25rem; text-align:center; color:var(--text-muted); font-size:0.78rem;">
+      &copy; 2025 Kairos. Todos os direitos reservados.
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  footer nav a:hover {
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr !important;
+      text-align: center;
+    }
+    .footer-grid > div:last-child {
+      text-align: center;
+    }
+  }
+</style>

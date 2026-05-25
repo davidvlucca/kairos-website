@@ -1,0 +1,198 @@
+---
+const waNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER;
+const waLink = `https://wa.me/${waNumber}`;
+---
+
+<section id="hero">
+
+  <!-- Background layer (parallax target) -->
+  <div id="hero-bg" aria-hidden="true">
+    <!-- Atmospheric glow blob -->
+    <div
+      class="glow-blob"
+      style="top: -100px; left: 50%; transform: translateX(-50%);"
+    ></div>
+
+    <!-- Faint horizontal wave near bottom -->
+    <svg
+      viewBox="0 0 1440 80"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style="position: absolute; bottom: 0; left: 0; width: 100%; opacity: 0.04;"
+      aria-hidden="true"
+    >
+      <path
+        d="M0 40 C360 0, 720 80, 1080 40 S1440 0, 1440 40"
+        stroke="white"
+        stroke-width="1.5"
+        fill="none"
+      />
+    </svg>
+  </div>
+
+  <!-- Hero content -->
+  <div class="hero-content">
+
+    <!-- Section identifier pill -->
+    <span class="pill-label">STUDIO DE WEB E AUTOMAÇÃO · EST. 2025</span>
+
+    <!-- Main headline -->
+    <h1>O teu negócio online.<br>Em 72 horas.</h1>
+
+    <!-- Primary subtitle -->
+    <p class="hero-subtitle">
+      Criamos páginas e sistemas web para pequenos negócios<br>
+      que querem resultados rápidos, sem complicação.
+    </p>
+
+    <!-- EN tagline -->
+    <p class="hero-tagline"><em>Fast by design. Right on time.</em></p>
+
+    <!-- CTA row -->
+    <div class="hero-ctas">
+      <a href={waLink} class="btn-primary" target="_blank" rel="noopener noreferrer">
+        Falar no WhatsApp →
+      </a>
+      <a href="#planos" class="btn-ghost">Ver Planos</a>
+    </div>
+
+    <!-- Stats row -->
+    <div class="hero-stats" aria-label="Destaques">
+      <span>72h Entrega</span>
+      <span class="stat-sep" aria-hidden="true">·</span>
+      <span>2 Planos</span>
+      <span class="stat-sep" aria-hidden="true">·</span>
+      <span>100% Remoto</span>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* ── Section ───────────────────────────────────── */
+  #hero {
+    position:        relative;
+    min-height:      100vh;
+    overflow:        hidden;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+  }
+
+  /* ── Background layer ──────────────────────────── */
+  #hero-bg {
+    position:       absolute;
+    inset:          0;
+    z-index:        0;
+    pointer-events: none;
+    will-change:    transform;
+  }
+
+  /* ── Content wrapper ───────────────────────────── */
+  .hero-content {
+    position:   relative;
+    z-index:    1;
+    text-align: center;
+    max-width:  860px;
+    padding:    2rem 1.5rem;
+
+    /* Stagger fade-in */
+    animation: fadeInUp 0.8s ease both;
+  }
+
+  /* ── Pill: already styled via .pill-label in global.css ── */
+
+  /* ── H1 ────────────────────────────────────────── */
+  h1 {
+    font-size:      clamp(3rem, 8vw, 6.5rem);
+    font-weight:    700;
+    line-height:    1.05;
+    letter-spacing: -0.02em;
+    color:          var(--text-primary);
+    margin-top:     1.5rem;
+  }
+
+  /* ── Subtitle ──────────────────────────────────── */
+  .hero-subtitle {
+    font-size:     1.1rem;
+    color:         var(--text-secondary);
+    margin-top:    1.25rem;
+    max-width:     600px;
+    margin-inline: auto;
+    line-height:   1.65;
+  }
+
+  /* ── EN tagline ────────────────────────────────── */
+  .hero-tagline {
+    font-family:  var(--font);
+    font-weight:  400;
+    font-style:   italic;
+    font-size:    0.9rem;
+    color:        var(--text-secondary);
+    margin-top:   0.75rem;
+  }
+
+  /* ── CTA row ───────────────────────────────────── */
+  .hero-ctas {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    gap:             1rem;
+    margin-top:      2.5rem;
+    flex-wrap:       wrap;
+  }
+
+  /* ── Stats row ─────────────────────────────────── */
+  .hero-stats {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    gap:             1rem;
+    flex-wrap:       wrap;
+    margin-top:      3rem;
+    font-size:       0.8rem;
+    color:           var(--text-muted);
+    letter-spacing:  0.05em;
+    text-transform:  uppercase;
+  }
+
+  .stat-sep {
+    opacity: 0.3;
+  }
+
+  /* ── Responsive adjustments ────────────────────── */
+  @media (max-width: 640px) {
+    .hero-subtitle br {
+      display: none;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+      align-items:    stretch;
+      max-width:      320px;
+      margin-inline:  auto;
+    }
+
+    .hero-ctas a {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  // ── Parallax on hero background ─────────────────
+  (function () {
+    const heroBg = document.getElementById('hero-bg');
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (heroBg) {
+          heroBg.style.transform = `translateY(${window.scrollY * 0.5}px)`;
+        }
+      },
+      { passive: true }
+    );
+  })();
+</script>

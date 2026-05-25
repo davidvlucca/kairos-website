@@ -1,0 +1,285 @@
+---
+const waNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER;
+const waLink = `https://wa.me/${waNumber}`;
+
+const navLinks = [
+  { label: 'Como Funciona', href: '#como-funciona' },
+  { label: 'Planos',        href: '#planos' },
+  { label: 'Portfólio',     href: '#portfolio' },
+  { label: 'FAQ',           href: '#faq' },
+];
+---
+
+<nav id="main-nav">
+  <!-- Logotype -->
+  <a href="/" class="nav-logo" aria-label="Kairos — início">kairos</a>
+
+  <!-- Desktop links + CTA -->
+  <div class="nav-right">
+    <ul class="nav-links" role="list">
+      {navLinks.map(({ label, href }) => (
+        <li><a href={href} class="nav-link">{label}</a></li>
+      ))}
+    </ul>
+    <a href={waLink} class="btn-primary nav-cta" target="_blank" rel="noopener noreferrer">
+      WhatsApp
+    </a>
+  </div>
+
+  <!-- Mobile hamburger -->
+  <button
+    class="hamburger"
+    id="hamburger-btn"
+    aria-label="Abrir menu"
+    aria-expanded="false"
+    aria-controls="mobile-overlay"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="3" y1="6"  x2="21" y2="6"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+</nav>
+
+<!-- Mobile full-screen overlay -->
+<div
+  id="mobile-overlay"
+  class="mobile-overlay"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menu de navegação"
+  hidden
+>
+  <!-- Close button -->
+  <button class="overlay-close" id="overlay-close-btn" aria-label="Fechar menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="18" y1="6"  x2="6"  y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="6"  y1="6"  x2="18" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <nav class="overlay-nav" aria-label="Menu móvel">
+    <ul role="list">
+      {navLinks.map(({ label, href }) => (
+        <li>
+          <a href={href} class="overlay-link" data-overlay-link>{label}</a>
+        </li>
+      ))}
+    </ul>
+    <a href={waLink} class="btn-primary overlay-cta" target="_blank" rel="noopener noreferrer"
+       data-overlay-link>
+      WhatsApp
+    </a>
+  </nav>
+</div>
+
+<style>
+  /* ── Nav bar ─────────────────────────────────── */
+  nav#main-nav {
+    position:        fixed;
+    top:             0;
+    left:            0;
+    right:           0;
+    z-index:         100;
+    padding:         1.25rem 2rem;
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    transition:      background 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* ── Logotype ─────────────────────────────────── */
+  .nav-logo {
+    font-family:     var(--font);
+    font-weight:     700;
+    font-size:       1.25rem;
+    letter-spacing:  0.2em;
+    color:           var(--text-primary);
+    text-decoration: none;
+    text-transform:  lowercase;
+    z-index:         1;
+  }
+
+  /* ── Desktop right side ───────────────────────── */
+  .nav-right {
+    display:     flex;
+    align-items: center;
+    gap:         2rem;
+  }
+
+  .nav-links {
+    display:    flex;
+    align-items: center;
+    gap:         1.75rem;
+    list-style:  none;
+  }
+
+  .nav-link {
+    font-family:     var(--font);
+    font-weight:     500;
+    font-size:       0.9rem;
+    color:           var(--text-secondary);
+    text-decoration: none;
+    transition:      color 0.2s ease;
+    white-space:     nowrap;
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+  }
+
+  .nav-cta {
+    font-size: 0.875rem;
+    padding:   0.6rem 1.4rem;
+  }
+
+  /* ── Hamburger ────────────────────────────────── */
+  .hamburger {
+    display:    none;
+    background: none;
+    border:     none;
+    color:      var(--text-primary);
+    cursor:     pointer;
+    padding:    0.25rem;
+    line-height: 0;
+  }
+
+  /* ── Mobile overlay ───────────────────────────── */
+  .mobile-overlay {
+    position:        fixed;
+    inset:           0;
+    z-index:         200;
+    background:      rgba(8, 8, 8, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+  }
+
+  .mobile-overlay[hidden] {
+    display: none;
+  }
+
+  .overlay-close {
+    position:   absolute;
+    top:        1.5rem;
+    right:      2rem;
+    background: none;
+    border:     none;
+    color:      var(--text-primary);
+    cursor:     pointer;
+    padding:    0.25rem;
+    line-height: 0;
+    opacity:    0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  .overlay-close:hover {
+    opacity: 1;
+  }
+
+  .overlay-nav {
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    gap:             2rem;
+    text-align:      center;
+  }
+
+  .overlay-nav ul {
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            1.5rem;
+    list-style:     none;
+  }
+
+  .overlay-link {
+    font-family:     var(--font);
+    font-weight:     500;
+    font-size:       1.5rem;
+    color:           var(--text-primary);
+    text-decoration: none;
+    transition:      color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .overlay-link:hover {
+    color:   var(--text-secondary);
+  }
+
+  .overlay-cta {
+    margin-top: 0.5rem;
+  }
+
+  /* ── Responsive breakpoint ────────────────────── */
+  @media (max-width: 768px) {
+    nav#main-nav {
+      padding: 1.1rem 1.5rem;
+    }
+
+    .nav-right {
+      display: none;
+    }
+
+    .hamburger {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  // ── Scroll: add/remove .scrolled class ──────────
+  (function () {
+    const nav = document.getElementById('main-nav');
+
+    function handleScroll() {
+      nav?.classList.toggle('scrolled', window.scrollY > 20);
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Run once on load in case the page starts scrolled
+    handleScroll();
+  })();
+
+  // ── Mobile overlay toggle ───────────────────────
+  (function () {
+    const hamburger  = document.getElementById('hamburger-btn');
+    const overlay    = document.getElementById('mobile-overlay');
+    const closeBtn   = document.getElementById('overlay-close-btn');
+    const overlayLinks = document.querySelectorAll('[data-overlay-link]');
+
+    function openOverlay() {
+      if (!overlay) return;
+      overlay.hidden = false;
+      hamburger?.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      closeBtn?.focus();
+    }
+
+    function closeOverlay() {
+      if (!overlay) return;
+      overlay.hidden = true;
+      hamburger?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      hamburger?.focus();
+    }
+
+    hamburger?.addEventListener('click', openOverlay);
+    closeBtn?.addEventListener('click', closeOverlay);
+
+    overlayLinks.forEach((link) => {
+      link.addEventListener('click', closeOverlay);
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay && !overlay.hidden) {
+        closeOverlay();
+      }
+    });
+  })();
+</script>
