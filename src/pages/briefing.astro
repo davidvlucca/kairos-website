@@ -51,7 +51,7 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
               <label>WhatsApp <span class="req">*</span></label>
               <div class="phone-wrap">
                 <button type="button" class="phone-flag-btn" aria-label="Selecionar código de país">
-                  <span class="pf-flag">🇵🇹</span>
+                  <span class="pf-abbr">PT</span>
                   <span class="pf-code">+351</span>
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;opacity:0.4;"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
@@ -123,6 +123,32 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
               <label for="b-servicos">Serviços ou produtos oferecidos <span class="req">*</span></label>
               <textarea id="b-servicos" name="servicos" class="form-input" rows="3"
                 placeholder="Lista os teus serviços ou produtos, um por linha."></textarea>
+            </div>
+
+            <!-- Línguas -->
+            <div class="field-group">
+              <label class="field-label">O site será em mais de uma língua?</label>
+              <div class="check-group">
+                <label class="check-option">
+                  <input type="checkbox" name="lingua" value="PT" checked /> PT — Português
+                </label>
+                <label class="check-option">
+                  <input type="checkbox" name="lingua" value="EN" class="lingua-extra" data-reveals="lingua-en-note" /> EN — Inglês
+                </label>
+                <label class="check-option">
+                  <input type="checkbox" name="lingua" value="ES" class="lingua-extra" data-reveals="lingua-es-note" /> ES — Espanhol
+                </label>
+              </div>
+              <div id="lingua-en-note" class="conditional-field">
+                <div class="info-box">
+                  <p>Os textos em <strong>inglês</strong> deverão ser fornecidos pelo cliente. Não nos responsabilizamos por traduções.</p>
+                </div>
+              </div>
+              <div id="lingua-es-note" class="conditional-field">
+                <div class="info-box">
+                  <p>Os textos em <strong>espanhol</strong> deverão ser fornecidos pelo cliente. Não nos responsabilizamos por traduções.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -280,7 +306,7 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
                 <label>Telefone público</label>
                 <div class="phone-wrap">
                   <button type="button" class="phone-flag-btn" aria-label="Selecionar código de país">
-                    <span class="pf-flag">🇵🇹</span>
+                    <span class="pf-abbr">PT</span>
                     <span class="pf-code">+351</span>
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;opacity:0.4;"><path d="M6 9l6 6 6-6"/></svg>
                   </button>
@@ -301,7 +327,7 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
               <label>WhatsApp público</label>
               <div class="phone-wrap">
                 <button type="button" class="phone-flag-btn" aria-label="Selecionar código de país">
-                  <span class="pf-flag">🇵🇹</span>
+                  <span class="pf-abbr">PT</span>
                   <span class="pf-code">+351</span>
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;opacity:0.4;"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
@@ -721,6 +747,7 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
   .phone-wrap {
     position: relative;
     display:  flex;
+    gap:      0.5rem;
   }
 
   .phone-flag-btn {
@@ -730,8 +757,7 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
     padding:       0 0.85rem;
     background:    rgba(255,255,255,0.04);
     border:        1px solid rgba(255,255,255,0.1);
-    border-right:  none;
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px;
     cursor:        pointer;
     color:         var(--text-primary);
     white-space:   nowrap;
@@ -741,15 +767,15 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
 
   .phone-flag-btn:hover,
   .phone-flag-btn.open {
-    background:    rgba(255,255,255,0.07);
-    border-color:  rgba(255,255,255,0.25);
+    background:   rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.25);
   }
 
-  .pf-flag { font-size: 1.1rem; line-height: 1; }
-  .pf-code { font-size: 0.82rem; color: var(--text-secondary); }
+  .pf-abbr { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; color: var(--text-primary); }
+  .pf-code  { font-size: 0.82rem; color: var(--text-secondary); }
 
   .phone-number-field {
-    border-radius: 0 10px 10px 0 !important;
+    border-radius: 10px !important;
     flex: 1;
     min-width: 0;
   }
@@ -815,7 +841,7 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
     color:      var(--text-primary);
   }
 
-  .pd-item-flag { font-size: 1.05rem; flex-shrink: 0; }
+  .pd-item-abbr { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; color: var(--text-muted); flex-shrink: 0; width: 1.8rem; }
   .pd-item-name { flex: 1; }
   .pd-item-code { font-size: 0.78rem; color: var(--text-muted); }
 
@@ -850,49 +876,49 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
 <script>
   // ── Country data ──────────────────────────────────────
   const COUNTRIES = [
-    { flag: '🇵🇹', name: 'Portugal',            code: '+351', pop: true },
-    { flag: '🇧🇷', name: 'Brasil',               code: '+55',  pop: true },
-    { flag: '🇪🇸', name: 'Espanha',              code: '+34',  pop: true },
-    { flag: '🇬🇧', name: 'Reino Unido',          code: '+44',  pop: true },
-    { flag: '🇫🇷', name: 'França',               code: '+33',  pop: true },
-    { flag: '🇿🇦', name: 'África do Sul',        code: '+27'  },
-    { flag: '🇩🇪', name: 'Alemanha',             code: '+49'  },
-    { flag: '🇦🇴', name: 'Angola',               code: '+244' },
-    { flag: '🇦🇷', name: 'Argentina',            code: '+54'  },
-    { flag: '🇦🇺', name: 'Austrália',            code: '+61'  },
-    { flag: '🇦🇹', name: 'Áustria',              code: '+43'  },
-    { flag: '🇧🇪', name: 'Bélgica',              code: '+32'  },
-    { flag: '🇨🇻', name: 'Cabo Verde',           code: '+238' },
-    { flag: '🇨🇦', name: 'Canadá',               code: '+1'   },
-    { flag: '🇨🇳', name: 'China',                code: '+86'  },
-    { flag: '🇨🇴', name: 'Colômbia',             code: '+57'  },
-    { flag: '🇰🇷', name: 'Coreia do Sul',        code: '+82'  },
-    { flag: '🇩🇰', name: 'Dinamarca',            code: '+45'  },
-    { flag: '🇦🇪', name: 'Emirados Árabes',      code: '+971' },
-    { flag: '🇺🇸', name: 'Estados Unidos',       code: '+1'   },
-    { flag: '🇫🇮', name: 'Finlândia',            code: '+358' },
-    { flag: '🇬🇷', name: 'Grécia',               code: '+30'  },
-    { flag: '🇬🇼', name: 'Guiné-Bissau',         code: '+245' },
-    { flag: '🇮🇳', name: 'Índia',                code: '+91'  },
-    { flag: '🇮🇪', name: 'Irlanda',              code: '+353' },
-    { flag: '🇮🇱', name: 'Israel',               code: '+972' },
-    { flag: '🇮🇹', name: 'Itália',               code: '+39'  },
-    { flag: '🇯🇵', name: 'Japão',                code: '+81'  },
-    { flag: '🇱🇺', name: 'Luxemburgo',           code: '+352' },
-    { flag: '🇲🇴', name: 'Macau',                code: '+853' },
-    { flag: '🇲🇦', name: 'Marrocos',             code: '+212' },
-    { flag: '🇲🇽', name: 'México',               code: '+52'  },
-    { flag: '🇲🇿', name: 'Moçambique',           code: '+258' },
-    { flag: '🇳🇱', name: 'Países Baixos',        code: '+31'  },
-    { flag: '🇵🇱', name: 'Polónia',              code: '+48'  },
-    { flag: '🇸🇹', name: 'São Tomé e Príncipe',  code: '+239' },
-    { flag: '🇸🇪', name: 'Suécia',               code: '+46'  },
-    { flag: '🇨🇭', name: 'Suíça',                code: '+41'  },
-    { flag: '🇹🇱', name: 'Timor-Leste',          code: '+670' },
-    { flag: '🇹🇷', name: 'Turquia',              code: '+90'  },
-    { flag: '🇺🇾', name: 'Uruguai',              code: '+598' },
-    { flag: '🇻🇪', name: 'Venezuela',            code: '+58'  },
-    { flag: '🇳🇴', name: 'Noruega',              code: '+47'  },
+    { abbr: 'PT', name: 'Portugal',            code: '+351', pop: true },
+    { abbr: 'BR', name: 'Brasil',               code: '+55',  pop: true },
+    { abbr: 'ES', name: 'Espanha',              code: '+34',  pop: true },
+    { abbr: 'GB', name: 'Reino Unido',          code: '+44',  pop: true },
+    { abbr: 'FR', name: 'França',               code: '+33',  pop: true },
+    { abbr: 'ZA', name: 'África do Sul',        code: '+27'  },
+    { abbr: 'DE', name: 'Alemanha',             code: '+49'  },
+    { abbr: 'AO', name: 'Angola',               code: '+244' },
+    { abbr: 'AR', name: 'Argentina',            code: '+54'  },
+    { abbr: 'AU', name: 'Austrália',            code: '+61'  },
+    { abbr: 'AT', name: 'Áustria',              code: '+43'  },
+    { abbr: 'BE', name: 'Bélgica',              code: '+32'  },
+    { abbr: 'CV', name: 'Cabo Verde',           code: '+238' },
+    { abbr: 'CA', name: 'Canadá',               code: '+1'   },
+    { abbr: 'CN', name: 'China',                code: '+86'  },
+    { abbr: 'CO', name: 'Colômbia',             code: '+57'  },
+    { abbr: 'KR', name: 'Coreia do Sul',        code: '+82'  },
+    { abbr: 'DK', name: 'Dinamarca',            code: '+45'  },
+    { abbr: 'AE', name: 'Emirados Árabes',      code: '+971' },
+    { abbr: 'US', name: 'Estados Unidos',       code: '+1'   },
+    { abbr: 'FI', name: 'Finlândia',            code: '+358' },
+    { abbr: 'GR', name: 'Grécia',               code: '+30'  },
+    { abbr: 'GW', name: 'Guiné-Bissau',         code: '+245' },
+    { abbr: 'IN', name: 'Índia',                code: '+91'  },
+    { abbr: 'IE', name: 'Irlanda',              code: '+353' },
+    { abbr: 'IL', name: 'Israel',               code: '+972' },
+    { abbr: 'IT', name: 'Itália',               code: '+39'  },
+    { abbr: 'JP', name: 'Japão',                code: '+81'  },
+    { abbr: 'LU', name: 'Luxemburgo',           code: '+352' },
+    { abbr: 'MO', name: 'Macau',                code: '+853' },
+    { abbr: 'MA', name: 'Marrocos',             code: '+212' },
+    { abbr: 'MX', name: 'México',               code: '+52'  },
+    { abbr: 'MZ', name: 'Moçambique',           code: '+258' },
+    { abbr: 'NL', name: 'Países Baixos',        code: '+31'  },
+    { abbr: 'PL', name: 'Polónia',              code: '+48'  },
+    { abbr: 'ST', name: 'São Tomé e Príncipe',  code: '+239' },
+    { abbr: 'SE', name: 'Suécia',               code: '+46'  },
+    { abbr: 'CH', name: 'Suíça',                code: '+41'  },
+    { abbr: 'TL', name: 'Timor-Leste',          code: '+670' },
+    { abbr: 'TR', name: 'Turquia',              code: '+90'  },
+    { abbr: 'UY', name: 'Uruguai',              code: '+598' },
+    { abbr: 'VE', name: 'Venezuela',            code: '+58'  },
+    { abbr: 'NO', name: 'Noruega',              code: '+47'  },
   ];
 
   function initPhoneInputs() {
@@ -903,7 +929,7 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
       const search   = wrap.querySelector<HTMLInputElement>('.pd-search')!;
       const numInput = wrap.querySelector<HTMLInputElement>('.phone-number-field')!;
       const hidden   = wrap.querySelector<HTMLInputElement>('input[type="hidden"]')!;
-      const flagEl   = wrap.querySelector<HTMLElement>('.pf-flag')!;
+      const abbrEl   = wrap.querySelector<HTMLElement>('.pf-abbr')!;
       const codeEl   = wrap.querySelector<HTMLElement>('.pf-code')!;
 
       let selected = COUNTRIES[0]; // Portugal default
@@ -930,7 +956,7 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
           const li = document.createElement('li');
           li.className = 'pd-item' + (c === selected ? ' active' : '');
           li.setAttribute('role', 'option');
-          li.innerHTML = `<span class="pd-item-flag">${c.flag}</span><span class="pd-item-name">${c.name}</span><span class="pd-item-code">${c.code}</span>`;
+          li.innerHTML = `<span class="pd-item-abbr">${c.abbr}</span><span class="pd-item-name">${c.name}</span><span class="pd-item-code">${c.code}</span>`;
           li.addEventListener('click', () => selectCountry(c));
           list.appendChild(li);
         });
@@ -938,7 +964,7 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
 
       function selectCountry(c: typeof COUNTRIES[0]) {
         selected    = c;
-        flagEl.textContent = c.flag;
+        abbrEl.textContent = c.abbr;
         codeEl.textContent = c.code;
         updateHidden();
         closeDropdown();
@@ -1005,6 +1031,16 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
           const el = document.getElementById(reveals);
           el?.classList.add('visible');
         }
+      });
+    });
+
+    // ── Language extra checkboxes ────────────────────
+    document.querySelectorAll<HTMLInputElement>('.lingua-extra').forEach((cb) => {
+      cb.addEventListener('change', () => {
+        const targetId = cb.dataset.reveals;
+        if (!targetId) return;
+        const note = document.getElementById(targetId);
+        note?.classList.toggle('visible', cb.checked);
       });
     });
 
