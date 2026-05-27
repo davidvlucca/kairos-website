@@ -51,6 +51,20 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
               <label for="b-wa">WhatsApp <span class="req">*</span></label>
               <input id="b-wa" name="whatsapp" type="tel" class="form-input" placeholder="+351 912 345 678" required />
             </div>
+            <div class="field-group">
+              <label class="field-label">Plano de interesse</label>
+              <div class="radio-group" data-name="plano">
+                <label class="radio-option">
+                  <input type="radio" name="plano" value="Essencial — €197" /> Essencial — €197
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="plano" value="Completo — €447" /> Completo — €447
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="plano" value="Ainda não sei" /> Ainda não sei
+                </label>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -759,6 +773,7 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
         `Nome: ${data.nome ?? ''}`,
         `Email: ${data.email ?? ''}`,
         `WhatsApp: ${data.whatsapp ?? ''}`,
+        `Plano: ${data.plano ?? 'Não indicado'}`,
         '',
         `Marca: ${data.marca ?? ''}`,
         `Área: ${data.area ?? ''}`,
