@@ -64,7 +64,7 @@
       </div>
 
       <!-- Placeholder card for future work -->
-      <div style="
+      <div class="portfolio-placeholder" style="
         border: 1px dashed rgba(255,255,255,0.1);
         border-radius: 16px;
         padding: 2rem;
@@ -98,6 +98,12 @@
     transform: translateY(-4px);
     border-color: var(--border-strong);
   }
+  @media (max-width: 768px) {
+    .portfolio-placeholder {
+      display: none;
+    }
+  }
+
   @media (max-width: 640px) {
     .portfolio-grid {
       grid-template-columns: 1fr;
