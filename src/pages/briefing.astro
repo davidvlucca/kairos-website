@@ -1105,6 +1105,7 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
         `Área: ${data.area ?? ''}`,
         `Descrição: ${data.descricao ?? ''}`,
         `Serviços: ${data.servicos ?? ''}`,
+        `Línguas do site: ${[data.lingua ?? 'PT'].flat().join(', ')}`,
         '',
         `Tem site: ${data['tem-site'] ?? 'Não respondeu'}${data['site-url'] ? ` — ${data['site-url']}` : ''}`,
         `Tem domínio: ${data['tem-dominio'] ?? 'Não respondeu'}${data.dominio ? ` — ${data.dominio}` : ''}`,
