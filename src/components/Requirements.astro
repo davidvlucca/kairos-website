@@ -96,6 +96,12 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
+  @media (max-width: 768px) {
+    section#requisitos {
+      display: none;
+    }
+  }
+
   @media (max-width: 640px) {
     .req-grid {
       grid-template-columns: 1fr;
