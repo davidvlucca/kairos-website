@@ -51,7 +51,6 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
               <label>WhatsApp <span class="req">*</span></label>
               <div class="phone-wrap">
                 <button type="button" class="phone-flag-btn" aria-label="Selecionar código de país">
-                  <span class="pf-abbr">PT</span>
                   <span class="pf-code">+351</span>
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;opacity:0.4;"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
@@ -327,7 +326,6 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
               <label>WhatsApp público</label>
               <div class="phone-wrap">
                 <button type="button" class="phone-flag-btn" aria-label="Selecionar código de país">
-                  <span class="pf-abbr">PT</span>
                   <span class="pf-code">+351</span>
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;opacity:0.4;"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
@@ -929,7 +927,6 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
       const search   = wrap.querySelector<HTMLInputElement>('.pd-search')!;
       const numInput = wrap.querySelector<HTMLInputElement>('.phone-number-field')!;
       const hidden   = wrap.querySelector<HTMLInputElement>('input[type="hidden"]')!;
-      const abbrEl   = wrap.querySelector<HTMLElement>('.pf-abbr')!;
       const codeEl   = wrap.querySelector<HTMLElement>('.pf-code')!;
 
       let selected = COUNTRIES[0]; // Portugal default
@@ -954,9 +951,11 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
             return;
           }
           const li = document.createElement('li');
-          li.className = 'pd-item' + (c === selected ? ' active' : '');
           li.setAttribute('role', 'option');
-          li.innerHTML = `<span class="pd-item-abbr">${c.abbr}</span><span class="pd-item-name">${c.name}</span><span class="pd-item-code">${c.code}</span>`;
+          li.style.cssText = `display:flex; align-items:center; justify-content:space-between; gap:0.75rem; padding:0.5rem 1rem; cursor:pointer; font-size:0.88rem; color:${c === selected ? '#fff' : 'rgba(255,255,255,0.5)'}; background:${c === selected ? 'rgba(255,255,255,0.06)' : 'transparent'};`;
+          li.innerHTML = `<span>${c.name}</span><span style="font-size:0.78rem; color:rgba(255,255,255,0.35); flex-shrink:0;">${c.code}</span>`;
+          li.addEventListener('mouseenter', () => { li.style.background = 'rgba(255,255,255,0.06)'; li.style.color = '#fff'; });
+          li.addEventListener('mouseleave', () => { if (c !== selected) { li.style.background = 'transparent'; li.style.color = 'rgba(255,255,255,0.5)'; } });
           li.addEventListener('click', () => selectCountry(c));
           list.appendChild(li);
         });
@@ -964,7 +963,6 @@ const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
 
       function selectCountry(c: typeof COUNTRIES[0]) {
         selected    = c;
-        abbrEl.textContent = c.abbr;
         codeEl.textContent = c.code;
         updateHidden();
         closeDropdown();
