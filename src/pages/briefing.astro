@@ -1,0 +1,835 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const w3fKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
+---
+
+<Layout
+  title="Briefing — Kairos"
+  description="Preenche o briefing do teu projeto Kairos para que possamos começar a construir o teu site."
+>
+  <Nav />
+
+  <main>
+    <div class="page-wrap">
+
+      <!-- Header -->
+      <div class="page-header">
+        <span class="pill-label">BRIEFING · PROJETO</span>
+        <h1>Conta-nos o teu projeto.</h1>
+        <p class="page-subtitle">
+          Preenche em menos de 10 minutos. Só pedimos o essencial — o resto tratamos juntos.
+        </p>
+      </div>
+
+      <!-- Form -->
+      <form id="briefing-form" data-key={w3fKey} novalidate>
+
+        <!-- ── 01 Sobre ti ── -->
+        <div class="brief-section glass">
+          <div class="brief-section-head">
+            <span class="brief-step">01</span>
+            <div>
+              <h2 class="brief-title">Sobre ti</h2>
+              <p class="brief-desc">Como te contactamos.</p>
+            </div>
+          </div>
+          <div class="brief-fields">
+            <div class="field-row">
+              <div class="field-group">
+                <label for="b-nome">Nome completo <span class="req">*</span></label>
+                <input id="b-nome" name="nome" type="text" class="form-input" placeholder="David Lucca" required />
+              </div>
+              <div class="field-group">
+                <label for="b-email">Email <span class="req">*</span></label>
+                <input id="b-email" name="email" type="email" class="form-input" placeholder="exemplo@email.com" required />
+              </div>
+            </div>
+            <div class="field-group">
+              <label for="b-wa">WhatsApp <span class="req">*</span></label>
+              <input id="b-wa" name="whatsapp" type="tel" class="form-input" placeholder="+351 912 345 678" required />
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 02 O Negócio ── -->
+        <div class="brief-section glass">
+          <div class="brief-section-head">
+            <span class="brief-step">02</span>
+            <div>
+              <h2 class="brief-title">O teu negócio</h2>
+              <p class="brief-desc">Apresenta a tua marca e o que fazes.</p>
+            </div>
+          </div>
+          <div class="brief-fields">
+            <div class="field-row">
+              <div class="field-group">
+                <label for="b-marca">Nome da marca / negócio <span class="req">*</span></label>
+                <input id="b-marca" name="marca" type="text" class="form-input" placeholder="Ex: Celso Barber" required />
+              </div>
+              <div class="field-group">
+                <label for="b-area">Área de atuação <span class="req">*</span></label>
+                <select id="b-area" name="area" class="form-input select-field" required>
+                  <option value="" disabled selected>Seleciona uma área</option>
+                  <option>Beleza & Estética</option>
+                  <option>Saúde & Bem-estar</option>
+                  <option>Gastronomia & Restauração</option>
+                  <option>Moda & Vestuário</option>
+                  <option>Fitness & Desporto</option>
+                  <option>Serviços Profissionais</option>
+                  <option>Educação & Formação</option>
+                  <option>Comércio & Retalho</option>
+                  <option>Turismo & Hotelaria</option>
+                  <option>Arte & Criatividade</option>
+                  <option>Tecnologia</option>
+                  <option>Outra</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-group">
+              <label for="b-desc">Breve descrição do negócio <span class="req">*</span></label>
+              <textarea id="b-desc" name="descricao" class="form-input" rows="3"
+                placeholder="Ex: Barbearia premium em Cascais, focada em cortes clássicos e atendimento personalizado." required></textarea>
+            </div>
+            <div class="field-group">
+              <label for="b-servicos">Serviços ou produtos oferecidos <span class="req">*</span></label>
+              <textarea id="b-servicos" name="servicos" class="form-input" rows="3"
+                placeholder="Lista os teus serviços ou produtos, um por linha."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 03 Presença Digital ── -->
+        <div class="brief-section glass">
+          <div class="brief-section-head">
+            <span class="brief-step">03</span>
+            <div>
+              <h2 class="brief-title">Presença digital atual</h2>
+              <p class="brief-desc">O que já tens online.</p>
+            </div>
+          </div>
+          <div class="brief-fields">
+
+            <!-- Site -->
+            <div class="field-group">
+              <label class="field-label">Já tens um site?</label>
+              <div class="radio-group" data-name="tem-site">
+                <label class="radio-option">
+                  <input type="radio" name="tem-site" value="Sim" data-reveals="site-url-wrap" /> Sim
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="tem-site" value="Não" /> Não
+                </label>
+              </div>
+              <div id="site-url-wrap" class="conditional-field">
+                <input name="site-url" type="url" class="form-input" placeholder="https://meunegocio.pt" />
+              </div>
+            </div>
+
+            <!-- Domínio -->
+            <div class="field-group">
+              <label class="field-label">Já tens domínio registado?</label>
+              <div class="radio-group" data-name="tem-dominio">
+                <label class="radio-option">
+                  <input type="radio" name="tem-dominio" value="Sim" data-reveals="dominio-wrap" /> Sim
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="tem-dominio" value="Não" /> Não
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="tem-dominio" value="Não sei" /> Não sei
+                </label>
+              </div>
+              <div id="dominio-wrap" class="conditional-field">
+                <input name="dominio" type="text" class="form-input" placeholder="meunegocio.pt" />
+              </div>
+            </div>
+
+            <!-- Alojamento -->
+            <div class="field-group">
+              <label class="field-label">Já tens alojamento (hosting)?</label>
+              <div class="radio-group" data-name="tem-hosting">
+                <label class="radio-option">
+                  <input type="radio" name="tem-hosting" value="Sim" data-reveals="hosting-wrap" /> Sim
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="tem-hosting" value="Não" /> Não
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="tem-hosting" value="Não sei" /> Não sei
+                </label>
+              </div>
+              <div id="hosting-wrap" class="conditional-field">
+                <input name="hosting" type="text" class="form-input" placeholder="Ex: SiteGround, Hostinger, cPanel..." />
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── 04 Identidade & Conteúdo ── -->
+        <div class="brief-section glass">
+          <div class="brief-section-head">
+            <span class="brief-step">04</span>
+            <div>
+              <h2 class="brief-title">Identidade & conteúdo</h2>
+              <p class="brief-desc">O material visual que vais fornecer.</p>
+            </div>
+          </div>
+          <div class="brief-fields">
+
+            <!-- Logo -->
+            <div class="field-group">
+              <label class="field-label">Tens logo?</label>
+              <div class="radio-group" data-name="tem-logo">
+                <label class="radio-option">
+                  <input type="radio" name="tem-logo" value="Sim" data-reveals="logo-formato-wrap" /> Sim
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="tem-logo" value="Não" data-reveals="logo-opcional-wrap" /> Não
+                </label>
+              </div>
+
+              <div id="logo-formato-wrap" class="conditional-field">
+                <p class="cond-label">Em que formato(s)?</p>
+                <div class="check-group">
+                  <label class="check-option"><input type="checkbox" name="logo-formato" value="PDF / EPS" /> PDF / EPS</label>
+                  <label class="check-option"><input type="checkbox" name="logo-formato" value="PNG" /> PNG</label>
+                  <label class="check-option"><input type="checkbox" name="logo-formato" value="SVG" /> SVG</label>
+                  <label class="check-option"><input type="checkbox" name="logo-formato" value="Outro" /> Outro</label>
+                </div>
+              </div>
+
+              <div id="logo-opcional-wrap" class="conditional-field">
+                <div class="info-box">
+                  <span class="info-icon">💡</span>
+                  <p>Podes contratar o opcional de <strong>Identidade Visual por +€100</strong> — logo, paleta de cores, tipografia e símbolo, desenvolvidos por parceiro de design.</p>
+                </div>
+                <label class="check-option" style="margin-top: 0.75rem;">
+                  <input type="checkbox" name="opc-identidade" value="Sim" /> Quero contratar Identidade Visual (+€100)
+                </label>
+              </div>
+            </div>
+
+            <!-- Fotos -->
+            <div class="field-group">
+              <label class="field-label">Tens fotos do negócio?</label>
+              <div class="radio-group" data-name="tem-fotos">
+                <label class="radio-option">
+                  <input type="radio" name="tem-fotos" value="Sim" /> Sim
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="tem-fotos" value="Não" data-reveals="foto-opcional-wrap" /> Não
+                </label>
+              </div>
+
+              <div id="foto-opcional-wrap" class="conditional-field">
+                <div class="info-box">
+                  <span class="info-icon">📷</span>
+                  <p>Temos parceria com fotógrafo em Cascais. Sessão em estúdio de até 30 min, até 4 fotos tratadas entregues — <strong>+€50</strong>.</p>
+                </div>
+                <label class="check-option" style="margin-top: 0.75rem;">
+                  <input type="checkbox" name="opc-fotografia" value="Sim" /> Quero contratar Fotografia Profissional (+€50)
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── 05 Informações para o Site ── -->
+        <div class="brief-section glass">
+          <div class="brief-section-head">
+            <span class="brief-step">05</span>
+            <div>
+              <h2 class="brief-title">Informações para o site</h2>
+              <p class="brief-desc">O que aparece publicamente no site.</p>
+            </div>
+          </div>
+          <div class="brief-fields">
+            <div class="field-row">
+              <div class="field-group">
+                <label for="b-tel-pub">Telefone público</label>
+                <input id="b-tel-pub" name="tel-publico" type="tel" class="form-input" placeholder="+351 912 345 678" />
+              </div>
+              <div class="field-group">
+                <label for="b-email-pub">Email público</label>
+                <input id="b-email-pub" name="email-publico" type="email" class="form-input" placeholder="contacto@meunegocio.pt" />
+              </div>
+            </div>
+            <div class="field-group">
+              <label for="b-wa-pub">WhatsApp público</label>
+              <input id="b-wa-pub" name="wa-publico" type="tel" class="form-input" placeholder="+351 912 345 678" />
+            </div>
+
+            <!-- Social media -->
+            <div class="field-group">
+              <label class="field-label">Redes sociais a incluir no site</label>
+              <div class="socials-grid">
+                {[
+                  { id: 'ig',  label: 'Instagram',  placeholder: '@meunegocio' },
+                  { id: 'fb',  label: 'Facebook',   placeholder: 'facebook.com/meunegocio' },
+                  { id: 'li',  label: 'LinkedIn',   placeholder: 'linkedin.com/in/meuname' },
+                  { id: 'tt',  label: 'TikTok',     placeholder: '@meunegocio' },
+                  { id: 'yt',  label: 'YouTube',    placeholder: '@meunegocio' },
+                ].map(({ id, label, placeholder }) => (
+                  <div class="social-row">
+                    <label class="check-option social-check">
+                      <input type="checkbox" class="social-toggle" data-reveals={`s-${id}`} />
+                      {label}
+                    </label>
+                    <input
+                      id={`s-${id}`}
+                      name={`social-${id}`}
+                      type="text"
+                      class="form-input social-handle"
+                      placeholder={placeholder}
+                      style="display:none;"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 06 FAQ & Notas ── -->
+        <div class="brief-section glass">
+          <div class="brief-section-head">
+            <span class="brief-step">06</span>
+            <div>
+              <h2 class="brief-title">FAQ & notas <span class="optional-tag">opcional</span></h2>
+              <p class="brief-desc">Conteúdo extra para o site.</p>
+            </div>
+          </div>
+          <div class="brief-fields">
+            <div class="field-group">
+              <label for="b-faq">FAQ do site</label>
+              <p class="field-hint">Cola aqui as perguntas e respostas que queres incluir no site (até 10). Formato sugerido: P: ... / R: ...</p>
+              <textarea id="b-faq" name="faq" class="form-input" rows="6"
+                placeholder="P: Qual o horário de funcionamento?&#10;R: Segunda a sábado, das 9h às 20h.&#10;&#10;P: Aceitam cartão?&#10;R: Sim, aceitamos todos os cartões."></textarea>
+            </div>
+            <div class="field-group">
+              <label for="b-notas">Notas adicionais</label>
+              <textarea id="b-notas" name="notas" class="form-input" rows="3"
+                placeholder="Algo mais que queiras partilhar sobre o projeto, referências visuais, preferências, etc."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="submit-wrap">
+          <p class="submit-note">
+            Após recebermos o briefing, entramos em contacto em menos de 24 horas para confirmar os próximos passos.
+          </p>
+          <button id="brief-submit" type="submit" class="btn-primary submit-btn">
+            Enviar Briefing
+          </button>
+        </div>
+
+        <!-- Status messages -->
+        <div id="brief-success" class="status-msg status-ok" style="display:none;">
+          Briefing recebido! Entraremos em contacto em breve para confirmar os próximos passos.
+        </div>
+        <div id="brief-error" class="status-msg status-err" style="display:none;">
+          Algo correu mal. Tenta novamente ou fala connosco directamente no WhatsApp.
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    padding-top:    7rem;
+    padding-bottom: 6rem;
+  }
+
+  .page-wrap {
+    max-width:      760px;
+    margin-inline:  auto;
+    padding-inline: 1.5rem;
+  }
+
+  /* ── Header ── */
+  .page-header {
+    text-align:    center;
+    margin-bottom: 3.5rem;
+  }
+
+  .page-header h1 {
+    font-size:      clamp(2rem, 5vw, 3rem);
+    font-weight:    700;
+    margin-top:     1.25rem;
+    line-height:    1.1;
+  }
+
+  .page-subtitle {
+    color:         var(--text-secondary);
+    margin-top:    0.75rem;
+    font-size:     1.05rem;
+    max-width:     500px;
+    margin-inline: auto;
+    line-height:   1.6;
+  }
+
+  /* ── Section card ── */
+  .brief-section {
+    padding:       2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .brief-section-head {
+    display:        flex;
+    align-items:    flex-start;
+    gap:            1.25rem;
+    margin-bottom:  1.75rem;
+    padding-bottom: 1.5rem;
+    border-bottom:  1px solid var(--border);
+  }
+
+  .brief-step {
+    font-size:      1.75rem;
+    font-weight:    700;
+    color:          var(--text-muted);
+    line-height:    1;
+    flex-shrink:    0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .brief-title {
+    font-size:   1.15rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .brief-desc {
+    font-size:  0.9rem;
+    color:      var(--text-secondary);
+    margin-top: 0.2rem;
+  }
+
+  .optional-tag {
+    display:        inline-block;
+    padding:        0.1rem 0.5rem;
+    background:     rgba(255,255,255,0.06);
+    border:         1px solid rgba(255,255,255,0.1);
+    border-radius:  999px;
+    font-size:      0.65rem;
+    font-weight:    600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color:          var(--text-muted);
+    margin-left:    0.5rem;
+    vertical-align: middle;
+  }
+
+  /* ── Fields layout ── */
+  .brief-fields {
+    display:        flex;
+    flex-direction: column;
+    gap:            1.4rem;
+  }
+
+  .field-row {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   1rem;
+  }
+
+  .field-group {
+    display:        flex;
+    flex-direction: column;
+    gap:            0.45rem;
+  }
+
+  .field-group label,
+  .field-label {
+    font-size:   0.85rem;
+    font-weight: 500;
+    color:       var(--text-secondary);
+  }
+
+  .field-hint {
+    font-size:  0.8rem;
+    color:      var(--text-muted);
+    line-height: 1.5;
+    margin-top: -0.1rem;
+  }
+
+  .req {
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── Select ── */
+  .select-field {
+    cursor:             pointer;
+    appearance:         none;
+    -webkit-appearance: none;
+    background-image:   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:  no-repeat;
+    background-position: right 1rem center;
+    padding-right:      2.5rem;
+  }
+
+  .select-field option {
+    background: #111;
+    color:      #fff;
+  }
+
+  /* ── Radio groups ── */
+  .radio-group {
+    display:   flex;
+    flex-wrap: wrap;
+    gap:       0.5rem;
+  }
+
+  .radio-option {
+    display:      inline-flex;
+    align-items:  center;
+    gap:          0.4rem;
+    padding:      0.5rem 1rem;
+    border:       1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    font-size:    0.9rem;
+    cursor:       pointer;
+    transition:   border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    user-select:  none;
+    color:        var(--text-secondary);
+  }
+
+  .radio-option input[type="radio"] {
+    display: none;
+  }
+
+  .radio-option.selected,
+  .radio-option:has(input:checked) {
+    border-color: rgba(255,255,255,0.5);
+    background:   rgba(255,255,255,0.08);
+    color:        var(--text-primary);
+  }
+
+  /* ── Checkboxes ── */
+  .check-group {
+    display:   flex;
+    flex-wrap: wrap;
+    gap:       0.5rem;
+  }
+
+  .check-option {
+    display:      inline-flex;
+    align-items:  center;
+    gap:          0.45rem;
+    font-size:    0.9rem;
+    cursor:       pointer;
+    color:        var(--text-secondary);
+    user-select:  none;
+    transition:   color 0.15s ease;
+  }
+
+  .check-option input[type="checkbox"] {
+    width:         16px;
+    height:        16px;
+    accent-color:  #fff;
+    cursor:        pointer;
+    flex-shrink:   0;
+  }
+
+  .check-option:has(input:checked) {
+    color: var(--text-primary);
+  }
+
+  /* ── Conditional fields ── */
+  .conditional-field {
+    display:      none;
+    margin-top:   0.75rem;
+    padding-top:  0.75rem;
+    border-top:   1px solid var(--border);
+    animation:    fadeInUp 0.2s ease both;
+  }
+
+  .conditional-field.visible {
+    display: block;
+  }
+
+  .cond-label {
+    font-size:     0.8rem;
+    color:         var(--text-muted);
+    margin-bottom: 0.5rem;
+    font-weight:   500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── Info box ── */
+  .info-box {
+    display:       flex;
+    align-items:   flex-start;
+    gap:           0.75rem;
+    padding:       1rem;
+    background:    rgba(255,255,255,0.03);
+    border:        1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+  }
+
+  .info-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  .info-box p {
+    font-size:   0.88rem;
+    color:       var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .info-box strong {
+    color: var(--text-primary);
+  }
+
+  /* ── Social media ── */
+  .socials-grid {
+    display:        flex;
+    flex-direction: column;
+    gap:            0.6rem;
+  }
+
+  .social-row {
+    display:     flex;
+    align-items: center;
+    gap:         0.75rem;
+    flex-wrap:   wrap;
+  }
+
+  .social-check {
+    min-width: 110px;
+  }
+
+  .social-handle {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  /* ── Submit area ── */
+  .submit-wrap {
+    margin-top:  2rem;
+    text-align:  center;
+  }
+
+  .submit-note {
+    font-size:     0.9rem;
+    color:         var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height:   1.6;
+  }
+
+  .submit-btn {
+    padding:   0.9rem 3rem;
+    font-size: 1rem;
+  }
+
+  /* ── Status messages ── */
+  .status-msg {
+    margin-top:    1.5rem;
+    padding:       1.25rem;
+    border-radius: 12px;
+    font-size:     0.95rem;
+    text-align:    center;
+    line-height:   1.5;
+  }
+
+  .status-ok {
+    background: rgba(74,222,128,0.08);
+    border:     1px solid rgba(74,222,128,0.2);
+    color:      #4ade80;
+  }
+
+  .status-err {
+    background: rgba(248,113,113,0.08);
+    border:     1px solid rgba(248,113,113,0.2);
+    color:      #f87171;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .brief-section {
+      padding: 1.5rem;
+    }
+
+    .field-row {
+      grid-template-columns: 1fr;
+    }
+
+    .social-row {
+      flex-direction: column;
+      align-items:    flex-start;
+    }
+
+    .social-handle {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // ── Radio groups with conditional reveal ──────────
+    document.querySelectorAll<HTMLInputElement>('input[type="radio"]').forEach((radio) => {
+      radio.addEventListener('change', () => {
+        const groupName = radio.name;
+
+        // Hide all conditionals linked to radios in this group
+        document.querySelectorAll<HTMLInputElement>(`input[type="radio"][name="${groupName}"]`).forEach((r) => {
+          const reveals = r.dataset.reveals;
+          if (reveals) {
+            const el = document.getElementById(reveals);
+            el?.classList.remove('visible');
+          }
+        });
+
+        // Show the conditional for the selected radio
+        const reveals = radio.dataset.reveals;
+        if (reveals && radio.checked) {
+          const el = document.getElementById(reveals);
+          el?.classList.add('visible');
+        }
+      });
+    });
+
+    // ── Social media checkboxes ───────────────────────
+    document.querySelectorAll<HTMLInputElement>('.social-toggle').forEach((cb) => {
+      cb.addEventListener('change', () => {
+        const targetId = cb.dataset.reveals;
+        if (!targetId) return;
+        const input = document.getElementById(targetId) as HTMLInputElement | null;
+        if (input) {
+          input.style.display = cb.checked ? 'block' : 'none';
+          if (!cb.checked) input.value = '';
+        }
+      });
+    });
+
+    // ── Form submission ───────────────────────────────
+    const form = document.getElementById('briefing-form') as HTMLFormElement | null;
+    const submitBtn = document.getElementById('brief-submit') as HTMLButtonElement | null;
+    const successEl = document.getElementById('brief-success') as HTMLElement | null;
+    const errorEl   = document.getElementById('brief-error')   as HTMLElement | null;
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const w3fKey = (form as HTMLElement).dataset.key ?? '';
+
+      // Basic validation
+      const required = form.querySelectorAll<HTMLInputElement>('[required]');
+      let valid = true;
+      required.forEach((el) => {
+        if (!el.value.trim()) {
+          el.style.borderColor = 'rgba(248,113,113,0.6)';
+          valid = false;
+        } else {
+          el.style.borderColor = '';
+        }
+      });
+      if (!valid) return;
+
+      // Build payload
+      const fd = new FormData(form);
+      const data: Record<string, string | string[]> = {};
+      fd.forEach((val, key) => {
+        if (key in data) {
+          data[key] = Array.isArray(data[key])
+            ? [...(data[key] as string[]), val as string]
+            : [data[key] as string, val as string];
+        } else {
+          data[key] = val as string;
+        }
+      });
+
+      // Format into readable message
+      const lines: string[] = [
+        '── Briefing Kairos ──',
+        '',
+        `Nome: ${data.nome ?? ''}`,
+        `Email: ${data.email ?? ''}`,
+        `WhatsApp: ${data.whatsapp ?? ''}`,
+        '',
+        `Marca: ${data.marca ?? ''}`,
+        `Área: ${data.area ?? ''}`,
+        `Descrição: ${data.descricao ?? ''}`,
+        `Serviços: ${data.servicos ?? ''}`,
+        '',
+        `Tem site: ${data['tem-site'] ?? 'Não respondeu'}${data['site-url'] ? ` — ${data['site-url']}` : ''}`,
+        `Tem domínio: ${data['tem-dominio'] ?? 'Não respondeu'}${data.dominio ? ` — ${data.dominio}` : ''}`,
+        `Tem hosting: ${data['tem-hosting'] ?? 'Não respondeu'}${data.hosting ? ` — ${data.hosting}` : ''}`,
+        '',
+        `Tem logo: ${data['tem-logo'] ?? 'Não respondeu'}${data['logo-formato'] ? ` (${[data['logo-formato']].flat().join(', ')})` : ''}`,
+        `Opc. identidade: ${data['opc-identidade'] ?? 'Não'}`,
+        `Tem fotos: ${data['tem-fotos'] ?? 'Não respondeu'}`,
+        `Opc. fotografia: ${data['opc-fotografia'] ?? 'Não'}`,
+        '',
+        `Tel. público: ${data['tel-publico'] ?? ''}`,
+        `Email público: ${data['email-publico'] ?? ''}`,
+        `WA público: ${data['wa-publico'] ?? ''}`,
+      ];
+
+      const socials = ['ig', 'fb', 'li', 'tt', 'yt'].map((s) => {
+        const v = data[`social-${s}`] as string | undefined;
+        return v ? `  ${s.toUpperCase()}: ${v}` : null;
+      }).filter(Boolean);
+      if (socials.length) lines.push('Redes sociais:', ...socials);
+
+      if (data.faq) lines.push('', `FAQ:`, data.faq as string);
+      if (data.notas) lines.push('', `Notas:`, data.notas as string);
+
+      const message = lines.join('\n');
+
+      // Loading state
+      if (submitBtn) {
+        submitBtn.textContent = 'A enviar...';
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.6';
+      }
+      if (successEl) successEl.style.display = 'none';
+      if (errorEl)   errorEl.style.display = 'none';
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({
+            access_key: w3fKey,
+            subject:    `[Kairos] Briefing — ${data.marca ?? data.nome}`,
+            name:       data.nome,
+            email:      data.email,
+            message,
+          }),
+        });
+        const result = await res.json();
+        if (result.success) {
+          if (successEl) successEl.style.display = 'block';
+          form.reset();
+          document.querySelectorAll('.conditional-field').forEach((el) => el.classList.remove('visible'));
+          document.querySelectorAll<HTMLInputElement>('.social-handle').forEach((el) => el.style.display = 'none');
+          document.querySelectorAll('.radio-option').forEach((el) => el.classList.remove('selected'));
+        } else {
+          if (errorEl) errorEl.style.display = 'block';
+        }
+      } catch {
+        if (errorEl) errorEl.style.display = 'block';
+      } finally {
+        if (submitBtn) {
+          submitBtn.textContent = 'Enviar Briefing';
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+        }
+      }
+    });
+  });
+</script>

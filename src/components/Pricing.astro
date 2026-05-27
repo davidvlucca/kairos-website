@@ -24,18 +24,19 @@ const waNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER;
         border-color: var(--border-strong);
         box-shadow: 0 0 60px rgba(255,255,255,0.04);
       ">
-        <span style="
-          display: inline-block;
-          padding: 0.2rem 0.7rem;
-          background: #ffffff;
-          color: #000000;
-          font-size: 0.7rem;
-          font-weight: 700;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          border-radius: 999px;
-          margin-bottom: 1.25rem;
-        ">Mais Popular</span>
+        <div style="height: 1.65rem; margin-bottom: 1.25rem; display: flex; align-items: center;">
+          <span style="
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            background: #ffffff;
+            color: #000000;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 999px;
+          ">Mais Popular</span>
+        </div>
 
         <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.25rem;">Essencial</h3>
 
@@ -86,6 +87,8 @@ const waNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER;
       <!-- Card 2: Completo -->
       <div class="glass" style="padding: 2.5rem; position: relative;">
 
+        <div style="height: 1.65rem; margin-bottom: 1.25rem;"></div>
+
         <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.25rem;">Completo</h3>
 
         <div style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; margin: 0.75rem 0; line-height: 1;">€447</div>
@@ -134,6 +137,61 @@ const waNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER;
 
     </div>
 
+    <!-- Optional add-ons -->
+    <div style="margin-top: 3.5rem;">
+      <div style="text-align:center; margin-bottom: 2rem;">
+        <span class="pill-label">OPCIONAIS · ADD-ONS</span>
+        <h3 style="font-size: 1.4rem; font-weight: 600; margin-top: 1rem; color: var(--text-secondary);">
+          Precisas de mais? Temos parceiros.
+        </h3>
+      </div>
+
+      <div class="addons-grid">
+
+        <!-- Add-on: Identidade Visual -->
+        <div class="glass" style="padding: 2rem; display: flex; gap: 1.5rem; align-items: flex-start;">
+          <div style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+              <path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/>
+            </svg>
+          </div>
+          <div>
+            <div style="display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.35rem;">
+              <h4 style="font-size: 1rem; font-weight: 700;">Identidade Visual</h4>
+              <span style="font-size: 1.1rem; font-weight: 700;">+€100</span>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.65;">
+              Para quem ainda não tem marca visual. Logo, paleta de cores, tipografia e símbolo básico — desenvolvidos por parceiro de design.
+            </p>
+          </div>
+        </div>
+
+        <!-- Add-on: Fotografia -->
+        <div class="glass" style="padding: 2rem; display: flex; gap: 1.5rem; align-items: flex-start;">
+          <div style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+          </div>
+          <div>
+            <div style="display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.35rem;">
+              <h4 style="font-size: 1rem; font-weight: 700;">Fotografia Profissional</h4>
+              <span style="font-size: 1.1rem; font-weight: 700;">+€50</span>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.65;">
+              Sessão em estúdio em Cascais, até 30 minutos. Até 4 fotos tratadas entregues — ideal para perfil, apresentação pessoal ou imagem institucional.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <p style="text-align:center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.85rem;">
+        Os opcionais podem ser contratados com qualquer plano. Basta mencioná-lo no contacto.
+      </p>
+    </div>
+
   </div>
 </section>
 
@@ -144,8 +202,16 @@ const waNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER;
     gap: 1.5rem;
     align-items: start;
   }
+  .addons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
   @media (max-width: 640px) {
-    .pricing-grid {
+    .pricing-grid,
+    .addons-grid {
       grid-template-columns: 1fr;
     }
   }
